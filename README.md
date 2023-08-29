@@ -1,5 +1,7 @@
 <h1>Gym Back Machine Detector</h1>
 
+![Banner](./Media/ezgif-5-81ce1448c1.gif "Banner")
+
 Build a gym back machine classifier using datasets of images from Google images, TikTok, Bilibili, Youtube videos, and Roboflow & Kaggle datasets. 
 
 <h3>Built With</h3>
@@ -28,7 +30,9 @@ The dataset consists of 7 back gym Machines. Although there was some off-the-she
 | [YOLOv8 medium](https://github.com/ultralytics/assets/releases/download/v0.0.0/yolov8m.pt) | 0.96725           | 0.80451              | 0.84         |
 
 
-<h5>Nano Model (Trained From Scratch)</h5>
+<h5>Pretrained model results on video:</h5>
+
+https://github.com/Masterx3/Back-Machine-Detector/assets/83991104/efc1ff09-4964-42e5-bb87-f7638a85f25a
 
 For nano model validation metrics, check [[1]](./runs/detect/train4/).
 
