@@ -1,0 +1,14 @@
+
+path: D:/My DL Workstation/Yolo v8 Gym equipment/data  # dataset root dir
+train: images/train  # train images (relative to 'path')
+val: images/val  # val images (relative to 'path')
+
+# Classes
+names:
+  0: machine_seated_mid_row
+  1: seated_cable_row
+  2: cable_lat_pulldown
+  3: machine_lat_pulldown
+  4: chest_supported_T_bar_row
+  5: landmine_T-bar_row
+  6: machine_reverse_fly
