@@ -46,7 +46,7 @@ def write_yaml(file_path: str, content, replace: bool) -> dict:
 def decode_img(imgstring, filename):
     img_data = base64.b64decode(imgstring)
     
-    with open('./data' + filename, 'wb') as f:
+    with open(os.path.join('./data', filename), 'wb') as f:
         f.write(img_data)
         f.close()
 

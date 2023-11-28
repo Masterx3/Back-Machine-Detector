@@ -30,8 +30,8 @@ def predict_route():
         image = request.json['image']
         decode_img(image, clApp.filename)
         
-        os.system("yolo task=detect mode=predict model=runs/detect/train/weights/best.pt conf=0.25 source=data/inputImg.png save=true")
-        opencodedbase64 = encode_img("runs/detect/predict/inputImg.png")
+        os.system("yolo task=detect mode=predict model=runs/detect/train/weights/best.pt conf=0.25 source=data/inputImg.jpg save=true")
+        opencodedbase64 = encode_img("runs/detect/predict/inputImg.jpg")
         result = {"image": opencodedbase64.decode('utf-8')}
         os.system('rm -rf runs/detect/predict')
         
