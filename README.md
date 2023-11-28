@@ -11,8 +11,8 @@ A gym back machine detector using datasets of images from Google images, Youtube
 + [CometML](https://github.com/comet-ml)
 + [Flask](https://github.com/pallets/flask)
 + [Containerization with Docker](https://docs.docker.com/get-started/overview/)
-<!-- + [Amazon AWS deployment](https://aws.amazon.com/)
-+ [CI/CD with Github Actions](https://github.com/features/actions) -->
++ [Microsoft Azure deployment](https://azure.microsoft.com/)
++ [CI/CD with Github Actions](https://github.com/features/actions)
 + [AnyLabeling](https://anylabeling.nrl.ai/)
   
  <h3>About the Dataset</h3>
