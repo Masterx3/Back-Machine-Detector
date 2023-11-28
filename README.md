@@ -1,6 +1,6 @@
 <h1>Gym Back Machine Detector</h1>
 
-![Alt text](../media/ezgif-5-81ce1448c1.gif)
+![Alt text](./media/ezgif-5-81ce1448c1.gif)
 
 A gym back machine detector using datasets of images from Google images, Youtube videos, TikTok, Bilibili, Roboflow and Kaggle datasets.
 
