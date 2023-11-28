@@ -1,0 +1,9 @@
+.ipynb_checkpoints/
+__pycache__/
+remaking functions.ipynb
+Gym Back Machine Detector.ipynb
+artifacts/pretrained yolov8
+artifacts/feature_store
+artifacts/data_ingestion
+log/
+my_project/
