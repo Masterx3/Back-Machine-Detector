@@ -1,8 +1,8 @@
 import os
-import sys
+from ultralytics import YOLO
 from GymDetector.pipeline.training_pipeline import TrainingPipeline
 from GymDetector.utils.main_utils import decode_img, encode_img
-from flask import Flask, request, jsonify, render_template,Response
+from flask import Flask, request, jsonify, render_template, Response
 from flask_cors import CORS, cross_origin
 from GymDetector.constant.application import APP_HOST, APP_PORT
 
@@ -27,12 +27,34 @@ def train_route():
 @cross_origin()
 def predict_route():
     try:
+        # get image
         image = request.json['image']
+        
+        # decode base64 image to image and save it in ./data as clApp.filename
         decode_img(image, clApp.filename)
         
-        os.system("yolo task=detect mode=predict model=runs/detect/train/weights/best.pt conf=0.25 source=data/inputImg.jpg save=true")
+        # instantiate the model
+        model = YOLO('runs/detect/train/weights/best.pt')
+        
+        # inference
+        results = model.predict(source='data/inputImg.jpg', save=True)
+        
+        # phone app results
+        phone_result ={}
+        
+        for i, result in enumerate(results):
+            
+            phone_result[f'class_of_instance_{i}'] = int(result.boxes.cls[0])  # Extract and convert class to integer
+            phone_result[f'conf_of_instance_{i}'] = float(result.boxes.conf[0])  # Extract and convert confidence to float
+
+            # Extract xyxy coordinates as a list of floats
+            xyxy_list = [float(coord) for coord in result.boxes.xyxy[0].tolist()]
+            phone_result[f'xyxy_of_instance_{i}'] = xyxy_list
+            
+        # web app results
         opencodedbase64 = encode_img("runs/detect/predict/inputImg.jpg")
-        result = {"image": opencodedbase64.decode('utf-8')}
+        web_result = {"image": opencodedbase64.decode('utf-8')}
+        
         os.system('rm -rf runs/detect/predict')
         
     except ValueError as val:
@@ -44,11 +66,16 @@ def predict_route():
     
     except Exception as e:
         print(e)
-        result = 'invalid_input'
+        result = f'invalid_input, {e}'
         
-    return jsonify(result)
+    client_type = request.args.get('client_type', default='web')
+    if client_type == 'phone':
+        return jsonify(phone_result)
+    else:
+        return jsonify(web_result)
 
 if __name__ == '__main__':
     clApp = ClientApp()
-    app.run(host=APP_HOST, port=APP_PORT)
+    # app.run(host=APP_HOST, port=APP_PORT)
+    # app.run(host='0.0.0.0', debug=True, port=9600)
     app.run(host='0.0.0.0', port=80) # for Azure
