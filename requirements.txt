@@ -3,6 +3,7 @@ from-root==1.0.2
 notebook==7.0.0a7
 comet_ml
 gdown
+opencv-python
 flask-cors
 flask
 ultralytics==8.0.28
