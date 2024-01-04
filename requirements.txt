@@ -6,6 +6,6 @@ gdown
 opencv-python
 flask-cors
 flask
-ultralytics==8.0.28
+ultralytics
 streamlit
 -e .

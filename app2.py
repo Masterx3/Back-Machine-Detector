@@ -6,7 +6,6 @@ st.write("<h1 style='text-align: center';>Gym Back Machine Detector</h1>", unsaf
 colA, colB, colC = st.columns(3)
 st.image("./media/ezgif-5-81ce1448c1.gif", use_column_width=True)  # Display image in the column
 st.write("Possible classes:")
-all_classes = ["Cyst", "Normal", "Stone", "Tumor"]
 
 # Displaying the possible classes as a JSON block
 classes_dict = {"Class 0": "machine_seated_mid_row",
