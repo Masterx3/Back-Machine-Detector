@@ -10,6 +10,7 @@ A gym back machine detector using datasets of images from Google images, Youtube
 + [Ultralytics YOLOv8](https://github.com/ultralytics/ultralytics)
 + [CometML](https://github.com/comet-ml)
 + [Flask](https://github.com/pallets/flask)
++ [Streamlit](https://streamlit.io/)
 + [Containerization with Docker](https://docs.docker.com/get-started/overview/)
 + [Microsoft Azure deployment](https://azure.microsoft.com/)
 + [CI/CD with Github Actions](https://github.com/features/actions)
@@ -62,13 +63,19 @@ pip3 install --upgrade torch torchvision torchaudio --index-url https://download
 run the following command in the terminal
 
 ```bash
+python app2.py
+```
+
+Alternatively, you can launch the static HTML webpage
+
+```bash
 python app.py
 ```
 
 Now, open the following link in the browser
 
 ```bash
- 0.0.0.0:8080
+localhost:8080
 ```
 
 You can now upload an image of a desired category, and click predict for the result.

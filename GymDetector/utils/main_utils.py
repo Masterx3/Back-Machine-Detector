@@ -1,5 +1,6 @@
 import os
 import sys
+import io
 import yaml
 import base64
 from GymDetector.exception import AppException
@@ -50,6 +51,13 @@ def decode_img(imgstring, filename):
         f.write(img_data)
         f.close()
 
+def decode_img2(image_data, filename):
+  # Convert bytes to a PIL image object
+  image = Image.open(io.BytesIO(image_data))
+
+  # Save the image to a temporary file
+  image.save(filename)
+    
 # Encode image to binary
 def encode_img(cropped_image_path):
 
