@@ -43,4 +43,10 @@ if img:
     # Remove the temporary file
     os.remove(temp_file)
     os.system('rm -rf runs/detect/predict')
-    # os.remove(temp_file)
+    results_dict ={}
+        
+    for i, result in enumerate(results):
+        
+        results_dict[f'Class of detection number {i}'] = int(result.boxes.cls[0])  # Extract and convert class to integer
+        results_dict[f'Confidence of detection {i}'] = float(result.boxes.conf[0])  # Extract and convert confidence to float
+    st.json(results_dict)
