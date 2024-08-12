@@ -379,7 +379,7 @@ def plot_4x(directory):
     cols = 4
     rows = (num_images + cols - 1) // cols
 
-    dpi = 400  # Adjust the DPI value as per your needs
+    dpi = 400
 
     fig, axes = plt.subplots(rows, cols, figsize=(12, 8), dpi=dpi)
 
@@ -393,3 +393,106 @@ def plot_4x(directory):
 
     plt.tight_layout()
     plt.show()
+
+def yolo_to_coco(yolo_dir, output_json_train, output_json_val, config_path):
+    def process_phase(phase):
+        images = []
+        annotations = []
+        img_id = 0
+        annotation_id = 0
+
+        img_list = os.listdir(os.path.join(yolo_dir, "images", phase))
+        for img_name in img_list:
+            img_path = os.path.join(yolo_dir, "images", phase, img_name)
+            try:
+                with Image.open(img_path) as img:
+                    width, height = img.size
+            except IOError:
+                print(f"Error opening image {img_path}. Skipping.")
+                continue
+
+            images.append({
+                "id": img_id,
+                "width": width,
+                "height": height,
+                "file_name": os.path.join("images", phase, img_name)
+            })
+
+            label_path = os.path.join(yolo_dir, "labels", phase, os.path.splitext(img_name)[0] + ".txt")
+
+            try:
+                with open(label_path, "r") as file:
+                    lines = file.readlines()
+            except IOError:
+                print(f"Error reading label file {label_path}. Skipping.")
+                continue
+
+            for line in lines:
+                try:
+                    class_id, x_center, y_center, bbox_width, bbox_height = map(float, line.strip().split())
+                except ValueError:
+                    print(f"Error parsing line in {label_path}. Skipping.")
+                    continue
+
+                x_center *= width
+                y_center *= height
+                bbox_width *= width
+                bbox_height *= height
+                x_min = x_center - bbox_width / 2
+                y_min = y_center - bbox_height / 2
+
+                annotations.append({
+                    "id": annotation_id,
+                    "image_id": img_id,
+                    "category_id": int(class_id),
+                    "bbox": [x_min, y_min, bbox_width, bbox_height],
+                    "area": bbox_width * bbox_height,
+                    "iscrowd": 0
+                })
+                annotation_id += 1
+
+            img_id += 1
+
+        return images, annotations
+
+    # Read class names from config file
+    with open(config_path, 'r') as f:
+        class_data = yaml.safe_load(f)
+    class_names = [class_data['names'][key] for key in sorted(class_data['names'].keys())]
+
+    categories = [{"id": i, "name": name} for i, name in enumerate(class_names)]
+
+    # Process train and val sets separately
+    train_images, train_annotations = process_phase("train")
+    val_images, val_annotations = process_phase("val")
+
+    # Save train annotations
+    with open(output_json_train, 'w') as outfile:
+        json.dump({
+            "images": train_images,
+            "annotations": train_annotations,
+            "categories": categories
+        }, outfile, indent=4)
+
+    # Save val annotations
+    with open(output_json_val, 'w') as outfile:
+        json.dump({
+            "images": val_images,
+            "annotations": val_annotations,
+            "categories": categories
+        }, outfile, indent=4)
+        
+def clean_img_dir_and_labels(image_dir):
+    corrupted = []
+    for root, dirs, files in os.walk(image_dir):
+        for file in files:
+            image_path = os.path.join(root, file)
+            try:
+                with Image.open(image_path) as img:
+                    img.load()
+            except(IOError, OSError) as e:
+                corrupted.append(image_path)
+                os.remove(image_path)
+                ann_path = image_path.replace('images', 'labels')
+                os.remove(ann_path)
+    return "The following corrupted images have been removed:" + "\n".join(corrupted)

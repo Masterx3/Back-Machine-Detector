@@ -1,0 +1,32 @@
+
+Benchmarks complete for best.pt on /mnt/DL/Projects/Yolo v8 Gym equipment/notebook/artifacts/feature_store/config.yaml at imgsz=640 (790.32s)
+                   Format Status❔  Size (MB)  metrics/mAP50-95(B)  Inference time (ms/im)     FPS
+0                 PyTorch       ✅       49.6               0.8156                   12.19   82.06
+1             TorchScript       ✅       99.1               0.7958                    5.26  190.10
+2                    ONNX       ✅       49.4               0.7967                  242.12    4.13
+3                OpenVINO       ❌        0.0                  NaN                     NaN     NaN
+4                TensorRT       ✅       53.4               0.7946                    2.57  388.68
+5                  CoreML       ❌        0.0                  NaN                     NaN     NaN
+6   TensorFlow SavedModel       ❌        0.0                  NaN                     NaN     NaN
+7     TensorFlow GraphDef       ❌        0.0                  NaN                     NaN     NaN
+8         TensorFlow Lite       ❌        0.0                  NaN                     NaN     NaN
+9     TensorFlow Edge TPU       ❌        0.0                  NaN                     NaN     NaN
+10          TensorFlow.js       ❌        0.0                  NaN                     NaN     NaN
+11           PaddlePaddle       ✅      197.6               0.7965                  781.01    1.28
+12                   NCNN       ✅       49.5               0.7965                  116.77    8.56
+
+Benchmarks complete for best.pt on /mnt/DL/Projects/Yolo v8 Gym equipment/notebook/artifacts/feature_store/config.yaml at imgsz=640 (679.56s)
+                   Format Status❔  Size (MB)  metrics/mAP50-95(B)  Inference time (ms/im)     FPS
+0                 PyTorch       ✅       49.6               0.8158                   11.91   84.00
+1             TorchScript       ✅       99.1               0.7965                    7.12  140.40
+2                    ONNX       ✅       98.8               0.7965                    9.74  102.69
+3                OpenVINO       ❌        0.0                  NaN                     NaN     NaN
+4                TensorRT       ✅      147.1               0.7964                    5.51  181.58
+5                  CoreML       ❌        0.0                  NaN                     NaN     NaN
+6   TensorFlow SavedModel       ❌        0.0                  NaN                     NaN     NaN
+7     TensorFlow GraphDef       ❌        0.0                  NaN                     NaN     NaN
+8         TensorFlow Lite       ❌        0.0                  NaN                     NaN     NaN
+9     TensorFlow Edge TPU       ❌        0.0                  NaN                     NaN     NaN
+10          TensorFlow.js       ❌        0.0                  NaN                     NaN     NaN
+11           PaddlePaddle       ✅      197.6               0.7965                  775.25    1.29
+12                   NCNN       ✅       98.8               0.7965                  120.50    8.30

@@ -2,12 +2,17 @@
 
 ![Alt text](./media/ezgif-5-81ce1448c1.gif)
 
-A gym back machine detector using datasets of images from Google images, Youtube videos, TikTok, Bilibili, Roboflow and Kaggle datasets.
+A gym back machine detector using datasets of images from Google images, Youtube videos, TikTok, Bilibili, Roboflow and Kaggle datasets. The following models have been trained:
+
++ [YOLOv8-nano](https://github.com/ultralytics/assets/releases/download/v8.2.0/yolov8n.pt)
++ [YOLOv8-medium](https://github.com/ultralytics/assets/releases/download/v8.2.0/yolov8m.pt)
++ [RT-DETRv2-X](https://github.com/lyuwenyu/storage/releases/download/v0.1/rtdetrv2_r101vd_6x_coco_from_paddle.pth)
 
 <h3>Built With</h3>
 
 + [Python](https://www.python.org/downloads/)
 + [Ultralytics YOLOv8](https://github.com/ultralytics/ultralytics)
++ [ONNX](https://onnx.ai/)
 + [CometML](https://github.com/comet-ml)
 + [Flask](https://github.com/pallets/flask)
 + [Streamlit](https://streamlit.io/)
@@ -51,12 +56,11 @@ conda activate gymback
 pip install -r requirements.txt
 ```
 
-+ STEP 04- training requirements using GPU (optional)
++ STEP 04- install training requirements using GPU (optional)
 
 ```bash
 pip3 install --upgrade torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu121
 ```
-
 
 ### To Run prediction using the pretrained model
 
@@ -82,14 +86,17 @@ You can now upload an image of a desired category, and click predict for the res
 
 ### Results
 
-| Model                                                                                 | mAP<sup>val<br>50 | mAP<sup>val<br>50-95 | Test Accuracy |
-| ------------------------------------------------------------------------------------- | ----------------- | -------------------- | ------------- |
-| YOLOv8 nano (from scratch)                                                          | 0.95399           | 0.74986              | ?         |
-| [YOLOv8 medium](https://github.com/ultralytics/assets/releases/download/v0.0.0/yolov8m.pt) | 0.96725           | 0.80451              | 0.84         |
+| Model                                                                                 | mAP<sup>val<br>50 | mAP<sup>val<br>50-95 | mAP<sup>test<br>50 | mAP<sup>test<br>50-95 |
+| ------------------------------------------------------------------------------------- | ----------------- | -------------------- | ------------------ | --------------------- |
+| [YOLOv8-nano (from-scratch)](https://github.com/ultralytics/assets/releases/download/v8.2.0/yolov8n.pt)                                                          | 0.95399           | 0.74986              | 0.848              | 0.604                   |
+| [YOLOv8-medium (finetuned)](https://github.com/ultralytics/assets/releases/download/v8.2.0/yolov8m.pt) | 0.96725           | 0.80451              | 0.874              | 0.683                 |
+| [RT-DETRv2-X (finetuned)](https://github.com/lyuwenyu/storage/releases/download/v0.1/rtdetrv2_r101vd_6x_coco_from_paddle.pth)                                                         | 0.972             | 0.836                | 0.922              | 0.775                 |
+
+
 
 <h5>Pretrained (medium) model results on video:</h5>
 
-https://github.com/Masterx3/Back-Machine-Detector/assets/83991104/efc1ff09-4964-42e5-bb87-f7638a85f25a
+<https://github.com/Masterx3/Back-Machine-Detector/assets/83991104/efc1ff09-4964-42e5-bb87-f7638a85f25a>
 
 + For nano model validation metrics, check [[1]](./runs/detect/train2/).
 
@@ -102,3 +109,46 @@ https://github.com/Masterx3/Back-Machine-Detector/assets/83991104/efc1ff09-4964-
 ### Acknowledgements
 
 Thanks to [Samir Gouda](github.com/SamirGouda) & [Omar Eldahshoury](github.com/omareldahshoury) for thier support.
+
+### License
+
+This project uses code from the YOLOv8 library by Ultralytics, which is licensed under the AGPL-3.0 License.
+
++ **Repository:** [Ultralytics YOLOv8 GitHub](https://github.com/ultralytics/ultralytics)
++ **License:** AGPL-3.0 License
++ **License Text:** See [LICENSE](LICENSE) for the full text.
+
+### Citation
+
+This project utilizes or is inspired by the RT-DETR and RTDETRv2 models. If you use this project in your work, please consider citing the original papers:
+
+```
+@misc{lv2023detrs,
+      title={DETRs Beat YOLOs on Real-time Object Detection},
+      author={Yian Zhao and Wenyu Lv and Shangliang Xu and Jinman Wei and Guanzhong Wang and Qingqing Dang and Yi Liu and Jie Chen},
+      year={2023},
+      eprint={2304.08069},
+      archivePrefix={arXiv},
+      primaryClass={cs.CV}
+}
+
+@misc{lv2024rtdetrv2improvedbaselinebagoffreebies,
+      title={RT-DETRv2: Improved Baseline with Bag-of-Freebies for Real-Time Detection Transformer}, 
+      author={Wenyu Lv and Yian Zhao and Qinyao Chang and Kui Huang and Guanzhong Wang and Yi Liu},
+      year={2024},
+      eprint={2407.17140},
+      archivePrefix={arXiv},
+      primaryClass={cs.CV},
+      url={https://arxiv.org/abs/2407.17140}, 
+}
+
+@software{Jocher_Ultralytics_YOLO_2023,
+author = {Jocher, Glenn and Chaurasia, Ayush and Qiu, Jing},
+license = {AGPL-3.0},
+month = jan,
+title = {{Ultralytics YOLO}},
+url = {https://github.com/ultralytics/ultralytics},
+version = {8.0.0},
+year = {2023}
+}
+```
