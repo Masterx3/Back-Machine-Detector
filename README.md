@@ -4,6 +4,7 @@
 
 A gym back machine detector using datasets of images from Google images, Youtube videos, TikTok, Bilibili, Roboflow and Kaggle datasets. The following models have been trained:
 
++ [YOLOv3] (from scratch implementation)
 + [YOLOv8-nano](https://github.com/ultralytics/assets/releases/download/v8.2.0/yolov8n.pt)
 + [YOLOv8-medium](https://github.com/ultralytics/assets/releases/download/v8.2.0/yolov8m.pt)
 + [RT-DETRv2-X](https://github.com/lyuwenyu/storage/releases/download/v0.1/rtdetrv2_r101vd_6x_coco_from_paddle.pth)
