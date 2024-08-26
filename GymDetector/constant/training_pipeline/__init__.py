@@ -5,7 +5,7 @@ DATA_INGESTION_DIR_NAME: str = 'data_ingestion'
 
 DATA_INGESTION_FEATURE_STORE_DIR: str = 'feature_store'
 
-DATA_DOWNLOAD_URL: str = 'https://drive.google.com/file/d/1cOzQQT3uZp-8uTUfMi_ZUJL59QEHKBib/view?usp=sharing'
+DATA_DOWNLOAD_URL: str = 'https://drive.google.com/file/d/1zoLhdlreYb2dMjPwbCiz7KsN5rTTIm_Z/view?usp=sharing'
 
 # Data validation
 DATA_VALIDATION_DIR_NAME: str = 'data_validation'

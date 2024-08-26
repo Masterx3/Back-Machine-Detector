@@ -18,3 +18,6 @@ GymDetector/pipeline/__init__.py
 GymDetector/pipeline/training_pipeline.py
 GymDetector/utils/__init__.py
 GymDetector/utils/main_utils.py
+GymDetector/utils/yolov3_config.py
+GymDetector/utils/yolov3_dataset.py
+GymDetector/utils/yolov3_loss.py

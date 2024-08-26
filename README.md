@@ -88,11 +88,10 @@ You can now upload an image of a desired category, and click predict for the res
 
 | Model                                                                                 | mAP<sup>val<br>50 | mAP<sup>val<br>50-95 | mAP<sup>test<br>50 | mAP<sup>test<br>50-95 |
 | ------------------------------------------------------------------------------------- | ----------------- | -------------------- | ------------------ | --------------------- |
-| [YOLOv8-nano (from-scratch)](https://github.com/ultralytics/assets/releases/download/v8.2.0/yolov8n.pt)                                                          | 0.95399           | 0.74986              | 0.848              | 0.604                   |
+| YOLOv3 (from-scratch)                                                                 | 0.515 | - | - | - |
+| [YOLOv8-nano (from-scratch)](https://github.com/ultralytics/assets/releases/download/v8.2.0/yolov8n.pt) | 0.95399           | 0.74986              | 0.848              | 0.604                   |
 | [YOLOv8-medium (finetuned)](https://github.com/ultralytics/assets/releases/download/v8.2.0/yolov8m.pt) | 0.96725           | 0.80451              | 0.874              | 0.683                 |
-| [RT-DETRv2-X (finetuned)](https://github.com/lyuwenyu/storage/releases/download/v0.1/rtdetrv2_r101vd_6x_coco_from_paddle.pth)                                                         | 0.972             | 0.836                | 0.922              | 0.775                 |
-
-
+| [RT-DETRv2-X (finetuned)](https://github.com/lyuwenyu/storage/releases/download/v0.1/rtdetrv2_r101vd_6x_coco_from_paddle.pth) | 0.972             | 0.836                | 0.922              | 0.775                 |
 
 <h5>Pretrained (medium) model results on video:</h5>
 

@@ -7,5 +7,9 @@ flask-cors
 flask
 ultralytics
 opencv-python-headless
+onnxruntime-gpu
+torchinfo
+tensorboard
+scikit-learn
 streamlit
 -e .
